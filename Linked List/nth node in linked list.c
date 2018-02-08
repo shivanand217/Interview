@@ -7,8 +7,8 @@ struct node {
 void insert_back(struct node **head, int data) {
     if(*head == NULL) {
         *head=(struct node *)malloc(sizeof(struct node));
-        (*head)->data=data;
-        (*head)->next=NULL;
+        (*head)->data = data;
+        (*head)->next = NULL;
         return;
     }
     struct node *tmp = *head;
