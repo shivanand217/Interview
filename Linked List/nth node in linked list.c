@@ -87,8 +87,9 @@ int main() {
     insert_front(&head,16);
     insert_front(&head,20);
 
-    nth_node(&head, 3);
+    nth_node(&head,3);
     display(&head);
+
     delete_back(&head);
     display(&head);
 
