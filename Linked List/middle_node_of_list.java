@@ -2,7 +2,7 @@ public class middle_node_of_list {
     public static class LinkedList {
         static node head;
 
-        public class node {
+        public static class node {
             int data;
             node next;
             node(int data) {
@@ -21,12 +21,12 @@ public class middle_node_of_list {
             }
             System.out.println("middle element is "+ one.data);
         }
-        public void insert_front(int data) {
+        public static void insert_front(int data) {
             node tmp = new node(data);
             tmp.next = head;
             head = tmp;
         }
-        public void insert_back(int data) {
+        public static void insert_back(int data) {
             if(head == null) {
                 node tmp = new node(data);
                 head = tmp;
@@ -50,9 +50,9 @@ public class middle_node_of_list {
                     System.out.print(Node.data);
                 Node=Node.next;
             }
+            System.out.println();
         }
     }
-
     public static void main(String args[]) {
         LinkedList list = new LinkedList();
 
@@ -66,5 +66,6 @@ public class middle_node_of_list {
         list.insert_front(22);
 
         list.printlist();
+        list.print_middle();
     }
 }
