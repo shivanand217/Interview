@@ -1,5 +1,5 @@
 # Interview
-All types of questions which can be asked in tech interviews regarding data structure and algorithms.
+All types of Technical Interview questions which can be asked in tech interviews regarding data structure and algorithms.
 
 ## Help Contributing Guides :crown:
 If you want to contribute to this repository please follow these guidelines.
