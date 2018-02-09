@@ -29,7 +29,7 @@ void insert_front(struct node **head,int data) {
     }
     struct node *tmp = (struct node *)malloc(sizeof(struct node));
     tmp->data=data;
-    tmp->next=NULL;
+    tmp->next=(*head);
     (*head)=tmp;
 }
 void display(struct node **head) {
@@ -40,25 +40,22 @@ void display(struct node **head) {
     }
     putchar('\n');
 }
-void nth_node(struct node **head, int n) {
-    if(*head == NULL) {
-        return;
+int solve(struct node **head,int data) {
+    if(*head == NULL)
+        return 0;
+    struct node *tmp = *head;
+    int cnt=0;
+    while( tmp != NULL ) {
+        if(tmp->data == data) {
+            cnt++;
+        }
+        tmp=tmp->next;
     }
-    n--;
-    struct node *one = *head;
-    struct node *two = *head;
-    while(n > 0) {
-        two = two->next;
-        n -= 1;
-    }
-    while(two->next!=NULL) {
-        one=one->next;
-        two=two->next;
-    }
-    printf("%d\n",one->data);
+    return cnt;
 }
 int main() {
     struct node *head = NULL;
+
     insert_back(&head,18);
     insert_back(&head,12);
     insert_back(&head,17);
@@ -67,8 +64,11 @@ int main() {
     insert_back(&head,28);
     insert_back(&head,30);
 
+    insert_front(&head,20);
+
     display(&head);
-    nth_node(&head,7);
+    int cnt = solve(&head,20);
+    printf("%d\n",cnt);
 
     return 0;
 }

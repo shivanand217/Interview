@@ -1,7 +1,6 @@
 public class middle_node_of_list {
     public static class LinkedList {
         static node head;
-
         public static class node {
             int data;
             node next;
@@ -10,16 +9,22 @@ public class middle_node_of_list {
                 this.next = null;
             }
         }
-        public static void print_middle() {
-            if(head == null)
+        public static void print_middle(int n) {
+            if( head == null )
                 return;
             node one = head;
             node two = head;
+            node prev = head;
             while(two != null && two.next != null) {
+                prev=one;
                 one = one.next;
                 two = two.next.next;
             }
-            System.out.println("middle element is "+ one.data);
+            if(n % 2 == 1) {
+                System.out.println("middle element is " + one.data);
+            } else {
+                System.out.println("Two middle elements "+ prev.data+ " and "+one.data);
+            }
         }
         public static void insert_front(int data) {
             node tmp = new node(data);
@@ -28,12 +33,10 @@ public class middle_node_of_list {
         }
         public static void insert_back(int data) {
             if(head == null) {
-                node tmp = new node(data);
-                head = tmp;
+                head = new node(data);
                 return;
             }
             node tmp = head;
-
             while(tmp.next != null) {
                 tmp = tmp.next;
             }
@@ -52,6 +55,15 @@ public class middle_node_of_list {
             }
             System.out.println();
         }
+        public static int nodes() {
+            node tmp = head;
+            int cnt=0;
+            while(tmp != null) {
+                cnt++;
+                tmp=tmp.next;
+            }
+            return cnt;
+        }
     }
     public static void main(String args[]) {
         LinkedList list = new LinkedList();
@@ -64,8 +76,13 @@ public class middle_node_of_list {
         list.insert_front(20);
         list.insert_front(21);
         list.insert_front(22);
+        list.insert_front(25);
+        list.insert_front(30);
 
         list.printlist();
-        list.print_middle();
+        int count = list.nodes();
+        System.out.println(count);
+
+        list.print_middle(count);
     }
 }
