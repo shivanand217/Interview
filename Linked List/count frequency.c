@@ -33,6 +33,9 @@ void insert_front(struct node **head,int data) {
     (*head)=tmp;
 }
 void display(struct node **head) {
+    if(*head == NULL) {
+        return;
+    }
     struct node *tmp = *head;
     while(tmp != NULL) {
         printf("%d ",tmp->data);
