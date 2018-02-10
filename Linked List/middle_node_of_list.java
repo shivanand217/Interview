@@ -27,6 +27,10 @@ public class middle_node_of_list {
             }
         }
         public static void insert_front(int data) {
+            if(head == null) {
+                head = new node(data);
+                return;
+            }
             node tmp = new node(data);
             tmp.next = head;
             head = tmp;
@@ -45,6 +49,9 @@ public class middle_node_of_list {
             tmp.next = null;
         }
         public static void printlist() {
+            if(head == null) {
+                System.out.println("list is empty");
+            }
             node Node = head;
             while(Node != null) {
                 if(Node.next != null)
@@ -56,6 +63,10 @@ public class middle_node_of_list {
             System.out.println();
         }
         public static int nodes() {
+            if(head == null) {
+                System.out.println("list is empty");
+                return;
+            }
             node tmp = head;
             int cnt=0;
             while(tmp != null) {
