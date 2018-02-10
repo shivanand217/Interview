@@ -53,8 +53,8 @@ public class LinkedList_template {
             node tmp = head;
             node prev = head;
             while(tmp.next != null) {
-                prev=tmp;
-                tmp=tmp.next;
+                prev = tmp;
+                tmp = tmp.next;
             }
             prev.next=null;
         }
@@ -92,6 +92,5 @@ public class LinkedList_template {
 
         list.delete_back();
         list.display();
-
     }
 }
