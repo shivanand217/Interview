@@ -53,6 +53,15 @@ public class remove_all_occurence {
                         if(head == null) {
                             return;
                         }
+                        if(tmp == null) {
+                            if(prev != null) {
+                                prev.next = null;
+                            }
+                            return;
+                        }
+                    }
+                    if(head == null) {
+                        return;
                     }
                     if(prev != null) {
                         prev.next=tmp;
@@ -91,6 +100,7 @@ public class remove_all_occurence {
         list.insert_at_back(18);
         list.insert_at_back(18);
         list.insert_at_back(44);
+        list.insert_at_back(48);
         list.insert_at_back(48);
 
         list.printlist();

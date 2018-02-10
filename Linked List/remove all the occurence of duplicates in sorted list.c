@@ -52,7 +52,7 @@ void remove_all(struct node **head) {
     int val;
     struct node *prev = NULL;
     struct node *rem = NULL;
-    while(tmp->next != NULL) {
+    while( tmp->next != NULL ) {
         if(tmp->data == tmp->next->data) {
             val = tmp->data;
             while(tmp->data == val) {
@@ -66,9 +66,18 @@ void remove_all(struct node **head) {
                     tmp=tmp->next;
                     free(rem);
                 }
-                if(*head == NULL) {
+                if( *head == NULL ) {
                     return;
                 }
+                if( tmp == NULL ) {
+                    if(prev != NULL) {
+                        prev->next = NULL;
+                    }
+                    return;
+                }
+            }
+            if(*head == NULL) {
+                return;
             }
             if(prev != NULL) {
                 prev->next = tmp;
@@ -82,19 +91,19 @@ void remove_all(struct node **head) {
 int main() {
     struct node *head = NULL;
 
-    insert_at_back(&head, 11);
-    insert_at_back(&head, 12);
-    insert_at_back(&head, 12);
-    insert_at_back(&head, 12);
-    insert_at_back(&head, 14);
-    insert_at_back(&head, 14);
-    insert_at_back(&head, 14);
-    insert_at_back(&head, 16);
-    insert_at_back(&head, 17);
+    insert_at_back(&head, 23);
+    insert_at_back(&head, 28);
+    insert_at_back(&head, 28);
+    insert_at_back(&head, 35);
+    insert_at_back(&head, 49);
+    insert_at_back(&head, 49);
+    insert_at_back(&head, 53);
+    insert_at_back(&head, 53);
+    /**insert_at_back(&head, 17);
     insert_at_back(&head, 18);
     insert_at_back(&head, 18);
     insert_at_back(&head, 44);
-    insert_at_back(&head, 48);
+    insert_at_back(&head, 48);**/
 
     display(&head);
 
