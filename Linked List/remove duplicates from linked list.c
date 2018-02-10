@@ -40,6 +40,7 @@ void display(struct node **head) {
     }
     putchar('\n');
 }
+/** linked list is sorted **/
 void remove_duplicate(struct node **head) {
     if(*head == NULL) {
         return;
