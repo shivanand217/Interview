@@ -71,10 +71,14 @@ int main() {
     insert_back(&head,23);
     insert_back(&head,44);
     insert_back(&head,44);
+    insert_back(&head,44);
     insert_back(&head,50);
+    insert_back(&head,59);
+    insert_back(&head,59);
     insert_back(&head,59);
 
     insert_front(&head,11);
+
     display(&head);
 
     remove_duplicate(&head);
