@@ -12,7 +12,7 @@ void insert_back(struct node **head, int data) {
         return;
     }
     struct node *tmp = *head;
-    while(tmp->next != NULL){
+    while(tmp->next != NULL) {
         tmp=tmp->next;
     }
     tmp->next = (struct node *)malloc(sizeof(struct node));
@@ -66,18 +66,22 @@ void display(struct node **head) {
     putchar('\n');
 }
 void nth_node(struct node **head, int n) {
-    int cnt=0;
+    if(*head == NULL) {
+       printf("list is empty\n");
+       return;
+    }
+    int cnt = 0;
     struct node *tmp = *head;
-    while(tmp != NULL){
+    while(tmp != NULL) {
         cnt++;
         if(cnt == n) {
-            printf("%dth node =  %d\n",n,tmp->data);
+            printf("%dth node =  %d\n", n , tmp->data);
             break;
         }
         tmp=tmp->next;
     }
     if(tmp == NULL) {
-        printf("%dth node does not exist in this linked list\n");
+        printf("%dth node does not exist in this linked list\n", n);
     }
 }
 int main() {
