@@ -71,6 +71,7 @@ void display(struct node **head) {
     printf("%d\n",tmp->data);
 }
 int main() {
+
     struct node *head = NULL;
 
     insert_at_back(&head, 23);

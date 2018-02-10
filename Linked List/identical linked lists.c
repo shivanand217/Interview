@@ -20,7 +20,7 @@ void insert_at_back(struct node **head, int data) {
     tmp->data=data;
     tmp->next=NULL;
 }
-void insert_at_front(struct node **head,int data) {
+void insert_at_front(struct node **head, int data) {
     if(*head == NULL) {
         (*head) = (struct node *)malloc(sizeof(struct node));
         (*head)->data = data;
@@ -87,8 +87,24 @@ void identical_lists( struct node **head1, struct node **head2, int *flag ) {
     }
     return;
 }
+void recursive_solution( struct node *head1, struct node *head2, int *flag) {
+    if(head1 == NULL && head2 != NULL) {
+        return;
+    }
+    if(head1 != NULL && head2 == NULL) {
+        return;
+    }
+    if(head1 == NULL && head2 == NULL) {
+        *flag = 1;
+        return;
+    }
+    if(head1->data == head2->data) {
+        recursive_solution(head1->next, head2->next, flag);
+    } else {
+        return;
+    }
+}
 int main() {
-
     struct node *head1 = NULL;
     struct node *head2 = NULL;
 
@@ -102,13 +118,21 @@ int main() {
     insert_at_back(&head2, 28);
     insert_at_back(&head2, 29);
     insert_at_back(&head2, 35);
-    insert_at_back(&head2, 800);
+    insert_at_back(&head2, 89);
 
     display(&head1);
     display(&head2);
 
     int flag = 0;
     identical_lists(&head1, &head2, &flag);
+    if(flag == 0) {
+        printf("Lists are not identical\n");
+    } else {
+        printf("Lists are Identical\n");
+    }
+
+    flag = 0;
+    recursive_solution(head1, head2, &flag);
 
     if(flag == 0) {
         printf("Lists are not identical\n");
