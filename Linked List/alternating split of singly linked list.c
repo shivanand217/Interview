@@ -71,11 +71,9 @@ void display(struct node **head) {
     printf("%d\n",tmp->data);
 }
 void alternating_split(struct node **head1, struct node **head2) {
-    if( *head1 == NULL )
+    if( *head1 == NULL || (*head1)->next == NULL )
         return;
-    if( (*head1)->next == NULL ) {
-        return;
-    }
+
     struct node *tmp1 = *head1;
     (*head2) = (*head1)->next;
     struct node *tmp2 = (*head2);

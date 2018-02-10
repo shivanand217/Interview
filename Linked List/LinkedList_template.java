@@ -1,5 +1,4 @@
 public class LinkedList_template {
-
     public static class LinkedList {
         static node head;
         public static class node {
