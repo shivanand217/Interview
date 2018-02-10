@@ -33,9 +33,13 @@ void insert_front(struct node **head,int data) {
     (*head)=tmp;
 }
 void display(struct node **head) {
+    if(*head == NULL) {
+        printf("list is empty\n");
+        return;
+    }
     struct node *tmp = *head;
     while( tmp != NULL ) {
-        printf("%d ",tmp->data);
+        printf("%d ", tmp->data);
         tmp=tmp->next;
     }
     putchar('\n');

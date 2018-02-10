@@ -33,6 +33,10 @@ void insert_front(struct node **head,int data) {
     (*head)=tmp;
 }
 void display(struct node **head) {
+    if(*head == NULL) {
+        printf("list is empty\n");
+        return;
+    }
     struct node *tmp = *head;
     while( tmp != NULL ) {
         printf("%d ",tmp->data);
@@ -40,7 +44,7 @@ void display(struct node **head) {
     }
     putchar('\n');
 }
-
+/** assuming data in linked list is upto 10^5 **/
 int seen[100005] = {0};
 
 void remove_duplicates(struct node **head) {

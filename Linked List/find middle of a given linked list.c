@@ -35,6 +35,9 @@ void insert_front(struct node **head, int data) {
     *head = tmp;
 }
 int count(struct node **head) {
+    if(*head == NULL){
+        return 0;
+    }
     int cnt = 0;
     struct node *tmp = *head;
     while(tmp != NULL) {
@@ -44,6 +47,9 @@ int count(struct node **head) {
     return cnt;
 }
 void middle_node(struct node **head,int cnt_nodes) {
+    if(*head == NULL){
+        return;
+    }
     int cnt=0;
     struct node *tmp = *head;
     int middle = (cnt_nodes/2);

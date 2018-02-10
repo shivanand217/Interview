@@ -6,6 +6,8 @@ struct node {
     struct node *next;
 };
 
+/** void pointer Concept **/
+
 void insert_at_front(struct node **head, void *new_data, size_t size) {
     struct node *new_node = (struct node *)malloc(sizeof(struct node));
     new_node->data = malloc(size);
@@ -24,7 +26,6 @@ void insert_at_back(struct node **head, void *new_data, size_t size) {
     if(*head == NULL) {
         struct node *new_node = (struct node *)malloc(sizeof(struct node));
         new_node->data = malloc(size);
-        //new_node->next = NULL;
         int i;
         for(i=0; i < size; i++) {
             *(char *)(new_node->data + i) = *(char *)(new_node + i);
@@ -33,17 +34,17 @@ void insert_at_back(struct node **head, void *new_data, size_t size) {
         (*head) = new_node;
         return;
     }
-    /**struct node *tmp = *head;
+    struct node *tmp = *head;
     while(tmp->next != NULL) {
         tmp = tmp->next;
     }
     tmp->next = (struct node *)malloc(sizeof(struct node));
     tmp = tmp->next;
     int i;
-    for( i=0; i < size; i++ ) {
+    for( i = 0; i < size; i++ ) {
         *(char *)(tmp->data + i) = *(char *)( new_data + i );
     }
-    tmp->next = NULL;**/
+    tmp->next = NULL;
 }
 
 void printInt(void *n) {

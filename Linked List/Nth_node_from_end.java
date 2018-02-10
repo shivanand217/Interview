@@ -32,6 +32,10 @@ public class Nth_node_from_end {
             tmp.next=null;
         }
         public static void print_list() {
+            if(head == null) {
+                System.out.println("List is empty");
+                return;
+            }
             node Node = head;
             while(Node != null) {
                 if(Node.next == null) {
@@ -44,6 +48,10 @@ public class Nth_node_from_end {
             return;
         }
         public static void nth_node(int n) {
+            if(head == null) {
+                System.out.println("List is empty");
+                return;
+            }
             node one = head;
             node two = head;
             int tmp=n;
