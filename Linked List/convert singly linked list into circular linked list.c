@@ -47,6 +47,10 @@ void delete_front(struct node **head) {
     free(tmp);
 }
 void convert_to_circular(struct node **head) {
+    if(*head == NULL){
+        printf("list is empty\n");
+        return;
+    }
     struct node *tmp = *head;
     if( *head == NULL )
         return;
@@ -57,6 +61,10 @@ void convert_to_circular(struct node **head) {
     return;
 }
 void display(struct node **head) {
+    if(*head == NULL) {
+        printf("list is empty\n");
+        return;
+    }
     struct node *tmp = *head;
     while(tmp->next != NULL) {
         printf("%d ",tmp->data);
