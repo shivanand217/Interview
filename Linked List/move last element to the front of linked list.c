@@ -7,8 +7,8 @@ struct node {
 void insert_at_back(struct node **head, int data) {
     if(*head == NULL) {
         (*head) = (struct node *)malloc(sizeof(struct node));
-        (*head)->data = data;
-        (*head)->next = NULL;
+        (*head)->data=data;
+        (*head)->next=NULL;
         return;
     }
     struct node *tmp = *head;
@@ -23,8 +23,8 @@ void insert_at_back(struct node **head, int data) {
 void insert_at_front(struct node **head,int data) {
     if(*head == NULL) {
         (*head) = (struct node *)malloc(sizeof(struct node));
-        (*head)->data = data;
-        (*head)->next = NULL;
+        (*head)->data=data;
+        (*head)->next=NULL;
         return;
     }
     struct node *tmp = (struct node *)malloc(sizeof(struct node));
@@ -70,7 +70,27 @@ void display(struct node **head) {
     }
     printf("%d\n",tmp->data);
 }
+void move_last_to_front(struct node **head) {
+    if((*head) == NULL) {
+        printf("list is empty\n");
+        return;
+    }
+    if((*head)->next == NULL) {
+        printf("Only one element is present\n");
+        return;
+    }
+    struct node *tmp = *head;
+    struct node *prev = *head;
+    while(tmp->next != NULL) {
+        prev = tmp;
+        tmp = tmp->next;
+    }
+    tmp->next=(*head);
+    prev->next=NULL;
+    (*head)=tmp;
+}
 int main() {
+
     struct node *head = NULL;
 
     insert_at_back(&head, 23);
@@ -78,22 +98,15 @@ int main() {
     insert_at_back(&head, 28);
     insert_at_back(&head, 35);
     insert_at_back(&head, 49);
-    insert_at_back(&head, 49);
     insert_at_back(&head, 53);
     insert_at_back(&head, 53);
     insert_at_back(&head, 17);
     insert_at_back(&head, 18);
     insert_at_back(&head, 18);
-    insert_at_back(&head, 44);
 
     display(&head);
-    delete_front(&head);
-    display(&head);
 
-    delete_last(&head);
-    display(&head);
-
-    insert_at_front(&head, 222);
+    move_last_to_front(&head);
     display(&head);
 
     return 0;
