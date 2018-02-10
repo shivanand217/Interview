@@ -99,11 +99,11 @@ int main() {
     insert_at_back(&head, 49);
     insert_at_back(&head, 53);
     insert_at_back(&head, 53);
-    /**insert_at_back(&head, 17);
+    insert_at_back(&head, 17);
     insert_at_back(&head, 18);
     insert_at_back(&head, 18);
     insert_at_back(&head, 44);
-    insert_at_back(&head, 48);**/
+    insert_at_back(&head, 48);
 
     display(&head);
 
