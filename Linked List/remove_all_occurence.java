@@ -33,6 +33,34 @@ public class remove_all_occurence {
             head=tmp;
             return;
         }
+        public static void delete_front() {
+            if(head == null) {
+                return;
+            }
+            node tmp=head;
+            if(tmp.next == null) {
+                head = null;
+                return;
+            }
+            head=tmp.next;
+        }
+        public static void delete_back() {
+            if(head == null) {
+                System.out.println("list is empty");
+                return;
+            }
+            if(head.next == null){
+                head=null;
+                return;
+            }
+            node tmp = head;
+            node prev = head;
+            while(tmp.next != null) {
+                prev = tmp;
+                tmp = tmp.next;
+            }
+            prev.next=null;
+        }
         public static void remove_all() {
             if(head == null)
                 return;

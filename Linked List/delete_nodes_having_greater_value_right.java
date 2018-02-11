@@ -1,6 +1,7 @@
-public class LinkedList_template {
+public class delete_nodes_having_greater_value_right {
     public static class LinkedList {
         static node head;
+
         public static class node {
             int data;
             node next;
@@ -73,10 +74,15 @@ public class LinkedList_template {
             }
             System.out.println();
         }
+        public static void reverse_list(){
+            if(head == null || head.next == null)
+                return;
+
+        }
     }
     public static void main(String args[]) {
-
         LinkedList list = new LinkedList();
+
         list.insert_at_back(11);
         list.insert_at_back(12);
         list.insert_at_back(13);
@@ -88,16 +94,6 @@ public class LinkedList_template {
         list.insert_at_front(89);
         list.insert_at_front(67);
 
-        list.display();
-        list.delete_front();
-        list.display();
-
-        list.display();
-
-        list.delete_front();
-        list.display();
-
-        list.delete_back();
         list.display();
     }
 }

@@ -31,6 +31,34 @@ public class Nth_node_from_end {
             tmp=tmp.next;
             tmp.next=null;
         }
+        public static void delete_front() {
+            if(head == null) {
+                return;
+            }
+            node tmp=head;
+            if(tmp.next == null) {
+                head = null;
+                return;
+            }
+            head=tmp.next;
+        }
+        public static void delete_back() {
+            if(head == null) {
+                System.out.println("list is empty");
+                return;
+            }
+            if(head.next == null){
+                head=null;
+                return;
+            }
+            node tmp = head;
+            node prev = head;
+            while(tmp.next != null) {
+                prev = tmp;
+                tmp = tmp.next;
+            }
+            prev.next=null;
+        }
         public static void print_list() {
             if(head == null) {
                 System.out.println("List is empty");

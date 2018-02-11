@@ -56,6 +56,10 @@ public class alternating_split_linked_list {
                 System.out.println("list is empty");
                 return;
             }
+            if(head1.next == null) {
+                head1 = null;
+                return;
+            }
             node tmp = head1;
             node prev = head1;
             while (tmp.next != null) {

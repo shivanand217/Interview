@@ -95,6 +95,10 @@ public class identical_linked_list {
                     System.out.println("list is empty");
                     return;
                 }
+                if(head1.next == null){
+                    head1=null;
+                    return;
+                }
                 node tmp = head1;
                 node prev = head1;
                 while (tmp.next != null) {
@@ -105,6 +109,10 @@ public class identical_linked_list {
             } else if(flag == 2) {
                 if (head2 == null) {
                     System.out.println("list is empty");
+                    return;
+                }
+                if(head1.next == null){
+                    head1=null;
                     return;
                 }
                 node tmp = head2;

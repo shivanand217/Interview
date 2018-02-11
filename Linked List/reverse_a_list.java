@@ -1,4 +1,4 @@
-public class LinkedList_template {
+public class reverse_a_list {
     public static class LinkedList {
         static node head;
         public static class node {
@@ -9,7 +9,7 @@ public class LinkedList_template {
                 this.next=null;
             }
         }
-        public static void insert_at_back(int data){
+        public static void insert_at_back(int data) {
             if(head == null) {
                 head = new node(data);
                 return;
@@ -67,16 +67,30 @@ public class LinkedList_template {
                 return;
             }
             node tmp = head;
-            while(tmp != null) {
+            while( tmp != null ) {
                 System.out.print(tmp.data+" ");
                 tmp = tmp.next;
             }
             System.out.println();
         }
+        public static void reverse_list() {
+            if(head == null || head.next == null)
+                return;
+            node current = head;
+            node next = null;
+            node prev = null;
+            while( current != null ) {
+                next=current.next;
+                current.next=prev;
+                prev=current;
+                current=next;
+            }
+            head=prev;
+        }
     }
     public static void main(String args[]) {
-
         LinkedList list = new LinkedList();
+
         list.insert_at_back(11);
         list.insert_at_back(12);
         list.insert_at_back(13);
@@ -89,15 +103,8 @@ public class LinkedList_template {
         list.insert_at_front(67);
 
         list.display();
-        list.delete_front();
-        list.display();
+        list.reverse_list();
 
-        list.display();
-
-        list.delete_front();
-        list.display();
-
-        list.delete_back();
         list.display();
     }
 }
