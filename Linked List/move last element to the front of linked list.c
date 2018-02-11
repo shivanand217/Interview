@@ -36,6 +36,12 @@ void delete_last(struct node **head) {
     if(*head == NULL) {
         return;
     }
+    if((*head)->next == NULL) {
+        struct node *tmp = *head;
+        free(tmp);
+        *head = NULL;
+        return;
+    }
     struct node *last = *head;
     struct node *prev_last;
     while( last->next != NULL ) {
@@ -90,7 +96,6 @@ void move_last_to_front(struct node **head) {
     (*head)=tmp;
 }
 int main() {
-
     struct node *head = NULL;
 
     insert_at_back(&head, 23);
@@ -105,7 +110,6 @@ int main() {
     insert_at_back(&head, 18);
 
     display(&head);
-
     move_last_to_front(&head);
     display(&head);
 

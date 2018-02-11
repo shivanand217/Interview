@@ -34,6 +34,38 @@ void insert_front(struct node **head, int data) {
     tmp->next = (*head);
     *head = tmp;
 }
+void delete_last(struct node **head) {
+    if(*head == NULL) {
+        return;
+    }
+    if( (*head)->next == NULL ) {
+        struct node *tmp = *head;
+        free(tmp);
+        *head = NULL;
+        return;
+    }
+    struct node *last = *head;
+    struct node *prev_last;
+    while( last->next != NULL ) {
+        prev_last = last;
+        last = last->next;
+    }
+    prev_last->next=NULL;
+    free(last);
+}
+void delete_front(struct node **head) {
+    if(*head == NULL) {
+        return;
+    }
+    struct node *tmp = *head;
+    if(tmp->next == NULL) {
+        *head=NULL;
+        free(tmp);
+        return;
+    }
+    (*head) = tmp->next;
+    free(tmp);
+}
 int count(struct node **head) {
     if(*head == NULL){
         return 0;
@@ -58,10 +90,10 @@ void middle_node(struct node **head,int cnt_nodes) {
         if( cnt == middle ) {
             if( cnt_nodes%2 == 1) {
                 tmp=tmp->next;
-                printf("%d\n",tmp->data);
+                printf("middle node is %d\n",tmp->data);
                 break;
             } else {
-                printf("%d %d\n",tmp->data,tmp->next->data);
+                printf("middle node is %d and %d\n",tmp->data,tmp->next->data);
                 break;
             }
         }
@@ -69,19 +101,33 @@ void middle_node(struct node **head,int cnt_nodes) {
     }
     return;
 }
+void display(struct node **head){
+    if(*head == NULL) {
+        printf("list is empty\n");
+        return;
+    }
+    struct node *tmp = *head;
+    while(tmp != NULL) {
+        printf("%d ",tmp->data);
+        tmp=tmp->next;
+    }
+    putchar('\n');
+}
 int main() {
     struct node *head = NULL;
 
-    insert_back(&head,18);
-    insert_back(&head,12);
-    insert_back(&head,17);
+    insert_back(&head, 18);
+    insert_back(&head, 12);
+    insert_back(&head, 17);
     insert_back(&head,20);
     insert_back(&head,25);
     insert_back(&head,28);
     insert_back(&head,30);
+    insert_back(&head,31);
 
     int cnt_nodes=count(&head);
-    printf("%d\n",cnt_nodes);
+    printf("total nodes are %d\n",cnt_nodes);
+    display(&head);
     middle_node(&head, cnt_nodes);
 
     return 0;

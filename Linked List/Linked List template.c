@@ -20,7 +20,7 @@ void insert_at_back(struct node **head, int data) {
     tmp->data=data;
     tmp->next=NULL;
 }
-void insert_at_front(struct node **head,int data) {
+void insert_at_front(struct node **head, int data) {
     if(*head == NULL) {
         (*head) = (struct node *)malloc(sizeof(struct node));
         (*head)->data = data;
@@ -34,6 +34,12 @@ void insert_at_front(struct node **head,int data) {
 }
 void delete_last(struct node **head) {
     if(*head == NULL) {
+        return;
+    }
+    if( (*head)->next == NULL ) {
+        struct node *tmp = *head;
+        free(tmp);
+        *head = NULL;
         return;
     }
     struct node *last = *head;
@@ -71,7 +77,6 @@ void display(struct node **head) {
     printf("%d\n",tmp->data);
 }
 int main() {
-
     struct node *head = NULL;
 
     insert_at_back(&head, 23);

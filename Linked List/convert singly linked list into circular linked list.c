@@ -24,6 +24,12 @@ void delete_last(struct node **head) {
     if(*head == NULL) {
         return;
     }
+    if( (*head)->next == NULL ) {
+        struct node *tmp = *head;
+        free(tmp);
+        *head = NULL;
+        return;
+    }
     struct node *last = *head;
     struct node *prev_last;
     while( last->next != NULL ) {
@@ -90,7 +96,6 @@ void display_circular(struct node **head) {
     }
 }
 int main() {
-
     struct node *head = NULL;
     insert(&head,11);
     insert(&head,12);
@@ -101,5 +106,6 @@ int main() {
     display_normal(&head);
     convert_to_circular(&head);
     display_circular(&head);
+
     return 0;
 }

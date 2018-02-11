@@ -32,6 +32,38 @@ void insert_front(struct node **head,int data) {
     tmp->next=NULL;
     (*head)=tmp;
 }
+void delete_last(struct node **head) {
+    if(*head == NULL) {
+        return;
+    }
+    if( (*head)->next == NULL ) {
+        struct node *tmp = *head;
+        free(tmp);
+        *head = NULL;
+        return;
+    }
+    struct node *last = *head;
+    struct node *prev_last;
+    while( last->next != NULL ) {
+        prev_last = last;
+        last = last->next;
+    }
+    prev_last->next=NULL;
+    free(last);
+}
+void delete_front(struct node **head) {
+    if(*head == NULL) {
+        return;
+    }
+    struct node *tmp = *head;
+    if(tmp->next == NULL) {
+        *head=NULL;
+        free(tmp);
+        return;
+    }
+    (*head) = tmp->next;
+    free(tmp);
+}
 void display(struct node **head) {
     struct node *tmp = *head;
     while(tmp != NULL) {
@@ -44,6 +76,7 @@ void nth_node(struct node **head, int n) {
     if(*head == NULL) {
         return;
     }
+    int k=n;
     n--;
     struct node *one = *head;
     struct node *two = *head;
@@ -55,7 +88,7 @@ void nth_node(struct node **head, int n) {
         one=one->next;
         two=two->next;
     }
-    printf("%d\n",one->data);
+    printf("%dth node from end is %d\n",k,one->data);
 }
 int main() {
     struct node *head = NULL;
@@ -68,7 +101,11 @@ int main() {
     insert_back(&head,30);
 
     display(&head);
+
     nth_node(&head,7);
+    nth_node(&head,1);
+    nth_node(&head,3);
+    nth_node(&head,5);
 
     return 0;
 }

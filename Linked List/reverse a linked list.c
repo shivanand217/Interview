@@ -4,35 +4,33 @@ struct node {
     int data;
     struct node *next;
 };
-void insert_back(struct node **head, int data) {
+void insert_at_back(struct node **head, int data) {
     if(*head == NULL) {
-        *head=(struct node *)malloc(sizeof(struct node));
+        (*head) = (struct node *)malloc(sizeof(struct node));
         (*head)->data = data;
         (*head)->next = NULL;
         return;
     }
     struct node *tmp = *head;
     while(tmp->next != NULL) {
-        tmp=tmp->next;
+        tmp = tmp->next;
     }
-    tmp->next = (struct node *)malloc(sizeof(struct node));
-    tmp = tmp->next;
+    tmp->next=(struct node *)malloc(sizeof(struct node));
+    tmp=tmp->next;
     tmp->data=data;
     tmp->next=NULL;
-    return;
 }
-void insert_front(struct node **head, int data) {
+void insert_at_front(struct node **head,int data) {
     if(*head == NULL) {
-        *head=(struct node *)malloc(sizeof(struct node));
-        (*head)->data=data;
-        (*head)->next=NULL;
+        (*head) = (struct node *)malloc(sizeof(struct node));
+        (*head)->data = data;
+        (*head)->next = NULL;
         return;
     }
-    struct node *tmp = NULL;
-    tmp = (struct node *)malloc(sizeof(struct node));
+    struct node *tmp = (struct node *)malloc(sizeof(struct node));
     tmp->data=data;
-    tmp->next = (*head);
-    *head = tmp;
+    tmp->next=(*head);
+    (*head)=tmp;
 }
 void delete_last(struct node **head) {
     if(*head == NULL) {
@@ -67,48 +65,44 @@ void delete_front(struct node **head) {
     free(tmp);
 }
 void display(struct node **head) {
-    if( *head == NULL )
+    if(*head == NULL) {
+        printf("list is empty\n");
         return;
+    }
     struct node *tmp = *head;
-    while(tmp != NULL) {
+    while(tmp->next != NULL) {
         printf("%d ",tmp->data);
         tmp=tmp->next;
     }
-    putchar('\n');
+    printf("%d\n",tmp->data);
 }
-void nth_node(struct node **head, int n) {
-    if(*head == NULL) {
-       printf("list is empty\n");
-       return;
+void reverse_list(struct node **head) {
+    if(*head == NULL || (*head)->next == NULL ) {
+        return;
     }
-    int cnt = 0;
-    struct node *tmp = *head;
-    while(tmp != NULL) {
-        cnt++;
-        if(cnt == n) {
-            printf("%dth node =  %d\n", n , tmp->data);
-            break;
-        }
-        tmp=tmp->next;
+    struct node *prev = NULL;
+    struct node *next;
+    struct node *current = (*head);
+    while(current != NULL) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
     }
-    if(tmp == NULL) {
-        printf("%dth node does not exist in this linked list\n", n);
-    }
+    (*head) = prev;
 }
 int main() {
     struct node *head = NULL;
-    insert_front(&head,12);
-    insert_front(&head,14);
-    insert_front(&head,16);
-    insert_front(&head,20);
 
-    nth_node(&head,3);
+    insert_at_back(&head, 23);
+    insert_at_back(&head, 28);
+    insert_at_back(&head, 28);
+    insert_at_back(&head, 35);
+    insert_at_back(&head, 49);
+
     display(&head);
 
-    delete_last(&head);
-    display(&head);
-
-    delete_front(&head);
+    reverse_list(&head);
     display(&head);
 
     return 0;

@@ -32,6 +32,38 @@ void insert_front(struct node **head,int data) {
     tmp->next=(*head);
     (*head)=tmp;
 }
+void delete_last(struct node **head) {
+    if(*head == NULL) {
+        return;
+    }
+    if( (*head)->next == NULL ) {
+        struct node *tmp = *head;
+        free(tmp);
+        *head = NULL;
+        return;
+    }
+    struct node *last = *head;
+    struct node *prev_last;
+    while( last->next != NULL ) {
+        prev_last = last;
+        last = last->next;
+    }
+    prev_last->next=NULL;
+    free(last);
+}
+void delete_front(struct node **head) {
+    if(*head == NULL) {
+        return;
+    }
+    struct node *tmp = *head;
+    if(tmp->next == NULL) {
+        *head=NULL;
+        free(tmp);
+        return;
+    }
+    (*head) = tmp->next;
+    free(tmp);
+}
 void display(struct node **head) {
     if(*head == NULL){
         printf("empty list\n");
@@ -102,6 +134,7 @@ int main() {
     insert_at_back(&head, 17);
     insert_at_back(&head, 18);
     insert_at_back(&head, 18);
+    insert_at_back(&head, 44);
     insert_at_back(&head, 44);
 
     display(&head);

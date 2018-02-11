@@ -76,57 +76,81 @@ void display(struct node **head) {
     }
     printf("%d\n",tmp->data);
 }
-void alternating_split(struct node **head1, struct node **head2) {
-    if( *head1 == NULL || (*head1)->next == NULL )
+int max(int x,int y) {
+    if( x < y )
+        return y;
+    else
+        return x;
+}
+void reverse_list(struct node **head) {
+    if(*head == NULL || (*head)->next == NULL ) {
+        return;
+    }
+    struct node *prev = NULL;
+    struct node *next;
+    struct node *current = (*head);
+    while(current != NULL) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    (*head) = prev;
+}
+void solve(struct node **head) {
+    if( *head == NULL || (*head)->next == NULL )
         return;
 
-    struct node *tmp1 = *head1;
-    (*head2) = (*head1)->next;
-    struct node *tmp2 = (*head2);
-    while(tmp1 != NULL || tmp2 != NULL) {
-        if(tmp1 != NULL) {
-            if(tmp1->next == NULL) {
-                /** do nothing **/
-            } else if(tmp1->next->next == NULL){
-                tmp1->next = NULL;
-            } else {
-                tmp1->next = tmp1->next->next;
-            }
-            tmp1=tmp1->next;
-        }
-        if(tmp2 != NULL) {
-            if(tmp2->next == NULL) {
-                /** do nothing **/
-            } else if(tmp2->next->next == NULL) {
-                tmp2->next = NULL;
-            } else {
-                tmp2->next = tmp2->next->next;
-            }
-            tmp2=tmp2->next;
+    display(head);
+    reverse_list(head);
+    display(head);
+
+    int max_now = (*head)->data;
+    struct node *tmp = *head;
+    struct node *prev = NULL;
+    struct node *curr;
+
+    while(tmp != NULL) {
+        if(tmp->data < max_now) {
+            prev->next = tmp->next;
+            curr = tmp;
+            tmp=tmp->next;
+            free(curr);
+        } else {
+            prev = tmp;
+            max_now = max(max_now,tmp->data);
+            tmp=tmp->next;
         }
     }
+
+    reverse_list(head);
+    display(head);
+    return;
 }
 int main() {
-    struct node *head1 = NULL;
-    insert_at_back(&head1, 0);
-    insert_at_back(&head1, 1);
-    insert_at_back(&head1, 0);
-    insert_at_back(&head1, 1);
-    insert_at_back(&head1, 0);
-    insert_at_back(&head1, 1);
-    insert_at_back(&head1, 0);
-    insert_at_back(&head1, 1);
-    insert_at_back(&head1, 0);
-    insert_at_back(&head1, 2);
+    struct node *head = NULL;
 
-    display(&head1);
+    insert_at_back(&head, 10);
+    insert_at_back(&head, 20);
+    insert_at_back(&head, 30);
+    insert_at_back(&head, 40);
+    insert_at_back(&head, 50);
+    insert_at_back(&head, 60);
 
-    struct node *head2 = NULL;
-    alternating_split(&head1, &head2);
+    solve(&head);
+    int i;
 
-    display(&head1);
-    display(&head2);
+    head = NULL;
+    insert_at_back(&head, 12);
+    insert_at_back(&head, 15);
+    insert_at_back(&head, 10);
+    insert_at_back(&head, 11);
+    insert_at_back(&head, 5);
+    insert_at_back(&head, 6);
+    insert_at_back(&head, 2);
+    insert_at_back(&head, 3);
+
+    solve(&head);
 
     return 0;
 }
-
