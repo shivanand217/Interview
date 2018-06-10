@@ -6,7 +6,7 @@ public class find_the_kth_char_of_decrypted_string {
 
     private static int curr = 0,  find = 0, target = 0, old = 0, i = 0, _new;
     private static int count = 0, len = 0, len2 = 0;
-    private static char ans='!';
+    private static char ans = '!';
 
     public static void main(String args[]) throws IOException, NullPointerException {
 
@@ -68,11 +68,16 @@ public class find_the_kth_char_of_decrypted_string {
                     }
                     break;
                 }
-                System.out.print(s2 + " " + count);
+                // System.out.print(s2 + " " + count);
             }
-                System.out.println();
+                // System.out.println();
         }
 
-        System.out.println(ans);
+        if(ans == '!') {
+            System.out.println("No character at that position");
+        } else {
+            System.out.println(ans);
+        }
+
     }
 }
