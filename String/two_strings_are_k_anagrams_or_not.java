@@ -9,7 +9,6 @@ public class two_strings_are_k_anagrams_or_not {
     private static int k;
 
     public static void main(String args[]) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String s1 = br.readLine();
         String s2 = br.readLine();
