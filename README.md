@@ -1,7 +1,7 @@
 # Interview
 All types of Technical Interview questions which can be asked in interviews regarding data structure and algorithms.
 
-### All the codes are working and correct upto my knowledge, If anyone found an issue please make a PR.
+### All the codes are working and correct upto my knowledge, If you find any issue please create a pull request.
 
 ## Help Contributing Guides :crown:
 If you want to contribute to this repository please follow these guidelines.
