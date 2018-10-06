@@ -2,9 +2,8 @@
 *.o
 *.iml
 *.xml
-*.cpp
 *.py
 *.cs
 *.php
 *.perl
-
+*a.out
