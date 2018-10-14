@@ -1,5 +1,6 @@
 
 vector<vector<int> > Solution::verticalOrderTraversal(TreeNode* A) {
+    
     vector< vector<int> > ans;
     
     // base case

@@ -8,8 +8,6 @@
  * };
  */
 
-#include<iostream>
-
 vector<int> Solution::inorderTraversal(TreeNode* A) {
 
     vector<int> ans;

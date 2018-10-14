@@ -17,8 +17,7 @@ void inorder(TreeNode *A, vector<int> &a){
     inorder(A->right, a);
 }
  
-int Solution::isSameTree(TreeNode* A, TreeNode* B) {
-    
+int Solution::isSameTree(TreeNode* A, TreeNode* B) {    
     if(A == NULL && B == NULL){
         return 1;
     }
